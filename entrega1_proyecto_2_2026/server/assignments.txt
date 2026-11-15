@@ -1,0 +1,7 @@
+{"student_id": "99999", "file_name": "voltage_divider.zip", "professor_id": "787878"}
+{"student_id": "99999", "file_name": "rc.zip", "professor_id": "111111"}
+{"student_id": "99999", "file_name": "pulse_divider.zip", "professor_id": "111111"}
+{"student_id": "99999", "file_name": "prueba_04_respuesta_rl.zip", "professor_id": "111111"}
+{"student_id": "99999", "file_name": "prueba_05_respuesta_rlc.zip", "professor_id": "111111"}
+{"student_id": "99999", "file_name": "voltage_divider_prueba_png.zip", "professor_id": "111111"}
+{"student_id": "99999", "file_name": "voltage_divider_sin_png.zip", "professor_id": "111111"}
