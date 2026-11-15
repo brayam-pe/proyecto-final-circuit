@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="460" viewBox="0 0 900 460">
+ <rect width="900" height="460" rx="24" fill="#f8fafc"/>
+ <text x="450" y="52" text-anchor="middle" font-family="Segoe UI,sans-serif" font-size="28" font-weight="700" fill="#172554">Divisor de voltaje</text>
+ <text x="450" y="83" text-anchor="middle" font-family="Segoe UI,sans-serif" font-size="16" fill="#475569">V1 = 10 V | R1 = 1 kOhm | R2 = 1 kOhm</text>
+ <g stroke="#1e293b" stroke-width="5" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M185 145 H365 M535 145 H700 V365 H185 V300"/>
+  <path d="M185 145 V190 M185 260 V365"/>
+  <path d="M365 145 V190 M365 260 V275 M365 325 V365"/>
+  <path d="M365 255 H700"/>
+  <path d="M350 190 L380 205 L350 220 L380 235 L350 250 L380 265"/>
+  <path d="M350 275 L380 290 L350 305 L380 320"/>
+  <path d="M165 190 H205 M165 260 H205"/>
+  <path d="M170 365 H200 M175 377 H195 M180 389 H190"/>
+ </g>
+ <circle data-node="input" cx="185" cy="145" r="9" fill="#f97316" stroke="#0f172a" stroke-width="2"/>
+ <circle data-node="output" cx="365" cy="255" r="9" fill="#f97316" stroke="#0f172a" stroke-width="2"/>
+ <g font-family="Segoe UI,sans-serif" fill="#0f172a">
+  <text x="115" y="220" font-size="18" font-weight="700">V1</text><text x="95" y="243" font-size="16">10 V</text>
+  <text x="390" y="218" font-size="18" font-weight="700">R1</text><text x="390" y="240" font-size="16">1 kOhm</text>
+  <text x="390" y="303" font-size="18" font-weight="700">R2</text><text x="390" y="325" font-size="16">1 kOhm</text>
+  <text x="710" y="249" font-size="17" font-weight="700">Vout</text><text x="713" y="273" font-size="16" fill="#ea580c">5 V esperado</text>
+  <text x="212" y="143" font-size="16" fill="#2563eb">Vin = 10 V</text><text x="212" y="350" font-size="16">GND (0)</text>
+  <text data-node-value="input" x="212" y="118" font-size="15" font-weight="700" fill="#0f172a">input: 10.0000 V</text>
+  <text data-node-value="output" x="710" y="303" font-size="15" font-weight="700" fill="#0f172a">output: 5.0000 V</text>
+  <text x="70" y="430" font-size="14" fill="#64748b">Esquema ilustrativo de voltage_divider.cir</text>
+ </g>
+</svg>
