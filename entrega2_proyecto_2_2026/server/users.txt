@@ -1,0 +1,9 @@
+{"name": "Alexander", "id": "787878", "role": "professor", "password": "professor_pass"}
+{"name": "Carlos", "id": "555555", "role": "professor", "password": "pass_carlos"}
+{"name": "Pedro", "id": "363636", "role": "professor", "password": "pass_carlos"}
+{"name": "Helena", "id": "999999", "role": "student", "password": "student_pass"}
+{"name": "Steven", "id": "121212", "role": "student", "password": "student_pass"}
+{"name": "Camilo", "id": "333333", "role": "student", "password": "student_pass"}
+{"name": "Juan", "id": "989898", "role": "student", "password": "student_pass"}
+{"name": "Steven2", "id": "111222", "role": "student", "password": "steven1221"}
+{"name": "Steven_prof", "id": "111111", "role": "professor", "password": "steven"}
