@@ -8,6 +8,7 @@ import requests  # Se usa solo para detectar si el servidor está apagado
 import virtuallab_client  
 from ventana_profesor import VentanaProfesor  # Ventana que se abre si entra un profesor
 from ventana_estudiante import VentanaEstudiante  # Ventana que se abre si entra un estudiante
+from estilo import ESTILO  # Hoja de estilo con los colores de la aplicación (archivo estilo.py)
 
 
 URL = "http://127.0.0.1:80"
@@ -24,6 +25,12 @@ class VentanaLogin(QMainWindow):
         super().__init__()  # Llama al constructor de QMainWindow
         self.setWindowTitle("Virtual Lab - Login")  # Título de la ventana
 
+        # --- Encabezado de la ventana ---
+        titulo = QLabel("Virtual Lab")  # Texto grande de arriba
+        titulo.setObjectName("titulo")  # Nombre que usa estilo.py para darle letra grande y turquesa
+        subtitulo = QLabel("Laboratorio virtual de circuitos")  # Texto pequeño debajo del título
+        subtitulo.setObjectName("subtitulo")  # Nombre que usa estilo.py para darle letra pequeña y gris
+
         # --- Etiquetas (textos fijos a la izquierda de cada campo) ---
         etiqueta_nombre = QLabel("Nombre:")  
         etiqueta_id = QLabel("ID:") 
@@ -34,7 +41,11 @@ class VentanaLogin(QMainWindow):
         self.campo_nombre = QLineEdit()  
         self.campo_id = QLineEdit()  
         self.campo_clave = QLineEdit()  
-        self.campo_clave.setEchoMode(QLineEdit.Password)  
+        self.campo_clave.setEchoMode(QLineEdit.Password)
+        # Textos grises de ejemplo que se ven dentro del campo mientras está vacío
+        self.campo_nombre.setPlaceholderText("Ej: Helena")  # Ejemplo de nombre
+        self.campo_id.setPlaceholderText("Ej: 999999")  # Ejemplo de ID
+        self.campo_clave.setPlaceholderText("Contraseña")  # Indica qué va en el campo
 
         # --- Lista desplegable (combo) para escoger el rol ---
         self.combo_rol = QComboBox()  # Crea la lista desplegable
@@ -44,20 +55,25 @@ class VentanaLogin(QMainWindow):
         boton_registrar = QPushButton("Registrarse")  # Botón para crear un usuario nuevo
         boton_registrar.clicked.connect(self.registrar)  # Al hacer clic se llama a self.registrar
         boton_entrar = QPushButton("Iniciar sesión")  # Botón para entrar
+        boton_entrar.setObjectName("primario")  # estilo.py lo pinta turquesa por ser la acción principal
         boton_entrar.clicked.connect(self.iniciarSesion)  # Al hacer clic se llama a self.iniciarSesion
 
         # --- Layout de cuadrícula: addWidget(widget, fila, columna) ---
         layout = QGridLayout()  # Crea la cuadrícula
-        layout.addWidget(etiqueta_nombre, 0, 0)  # Fila 0, columna 0
-        layout.addWidget(self.campo_nombre, 0, 1)  # Fila 0, columna 1
-        layout.addWidget(etiqueta_id, 1, 0)  # Fila 1, columna 0
-        layout.addWidget(self.campo_id, 1, 1)  # Fila 1, columna 1
-        layout.addWidget(etiqueta_rol, 2, 0)  # Fila 2, columna 0
-        layout.addWidget(self.combo_rol, 2, 1)  # Fila 2, columna 1
-        layout.addWidget(etiqueta_clave, 3, 0)  # Fila 3, columna 0
-        layout.addWidget(self.campo_clave, 3, 1)  # Fila 3, columna 1
-        layout.addWidget(boton_registrar, 4, 0)  # Fila 4, columna 0
-        layout.addWidget(boton_entrar, 4, 1)  # Fila 4, columna 1
+        layout.setContentsMargins(22, 18, 22, 18)  # Margen interno: izquierda, arriba, derecha, abajo (píxeles)
+        layout.setSpacing(10)  # Espacio entre un widget y otro
+        layout.addWidget(titulo, 0, 0, 1, 2)  # Fila 0, ocupa 2 columnas
+        layout.addWidget(subtitulo, 1, 0, 1, 2)  # Fila 1, ocupa 2 columnas
+        layout.addWidget(etiqueta_nombre, 2, 0)  # Fila 2, columna 0
+        layout.addWidget(self.campo_nombre, 2, 1)  # Fila 2, columna 1
+        layout.addWidget(etiqueta_id, 3, 0)  # Fila 3, columna 0
+        layout.addWidget(self.campo_id, 3, 1)  # Fila 3, columna 1
+        layout.addWidget(etiqueta_rol, 4, 0)  # Fila 4, columna 0
+        layout.addWidget(self.combo_rol, 4, 1)  # Fila 4, columna 1
+        layout.addWidget(etiqueta_clave, 5, 0)  # Fila 5, columna 0
+        layout.addWidget(self.campo_clave, 5, 1)  # Fila 5, columna 1
+        layout.addWidget(boton_registrar, 6, 0)  # Fila 6, columna 0
+        layout.addWidget(boton_entrar, 6, 1)  # Fila 6, columna 1
 
         widget_central = QWidget()  # QMainWindow necesita un widget central
         widget_central.setLayout(layout)  # Se le pone la cuadrícula al widget central
@@ -129,7 +145,8 @@ class VentanaLogin(QMainWindow):
 
 
 app = QApplication([])  # Crea la aplicación de Qt 
-app.setFont(QFont("Arial", 11))  
+app.setFont(QFont("Arial", 11))
+app.setStyleSheet(ESTILO)  # Aplica los colores de estilo.py a TODAS las ventanas de la aplicación
 ventana = VentanaLogin()  
 ventana.show()  
 app.exec()  # Arranca el ciclo de eventos 

@@ -17,6 +17,12 @@ class VentanaProfesor(QMainWindow):
         self.id_profesor = id_profesor  # Guarda el ID del profesor que inició sesión
         self.setWindowTitle("Virtual Lab - Profesor ID: " + id_profesor)  # Título de la ventana
 
+        # --- Encabezado de la ventana ---
+        titulo = QLabel("Panel del profesor")  # Texto grande de arriba
+        titulo.setObjectName("titulo")  # Nombre que usa estilo.py para darle letra grande y turquesa
+        subtitulo = QLabel("ID " + id_profesor)  # Texto pequeño con el ID del profesor
+        subtitulo.setObjectName("subtitulo")  # Nombre que usa estilo.py para darle letra pequeña y gris
+
         # --- Etiquetas que van encima de cada lista ---
         etiqueta_labs = QLabel("Laboratorios en el servidor")  # Título de la lista de laboratorios
         etiqueta_estudiantes = QLabel("Estudiantes (clic para marcar varios)")  # Título de la lista de estudiantes
@@ -32,18 +38,24 @@ class VentanaProfesor(QMainWindow):
         boton_subir.clicked.connect(self.subirLab)  # Al hacer clic se llama a self.subirLab
         boton_asignar = QPushButton("Asignar laboratorio")  # Botón para asignar
         boton_asignar.clicked.connect(self.asignarLab)  # Al hacer clic se llama a self.asignarLab
+        boton_asignar.setObjectName("primario")  # estilo.py lo pinta turquesa por ser la acción principal
         boton_salir = QPushButton("Cerrar sesión")  # Botón para salir
         boton_salir.clicked.connect(self.cerrarSesion)  # Al hacer clic se llama a self.cerrarSesion
+        boton_salir.setObjectName("salir")  # estilo.py lo pinta rojizo para que no se confunda
 
         # --- Layout de cuadrícula: addWidget(widget, fila, columna, filas que ocupa, columnas que ocupa) ---
         layout = QGridLayout()  # Crea la cuadrícula
-        layout.addWidget(etiqueta_labs, 0, 0)  # Fila 0, columna 0
-        layout.addWidget(etiqueta_estudiantes, 0, 1)  # Fila 0, columna 1
-        layout.addWidget(self.lista_labs, 1, 0)  # Fila 1, columna 0
-        layout.addWidget(self.lista_estudiantes, 1, 1)  # Fila 1, columna 1
-        layout.addWidget(boton_subir, 2, 0)  # Fila 2, columna 0
-        layout.addWidget(boton_asignar, 2, 1)  # Fila 2, columna 1
-        layout.addWidget(boton_salir, 3, 0, 1, 2)  # Fila 3, ocupa 1 fila y 2 columnas
+        layout.setContentsMargins(22, 18, 22, 18)  # Margen interno: izquierda, arriba, derecha, abajo (píxeles)
+        layout.setSpacing(10)  # Espacio entre un widget y otro
+        layout.addWidget(titulo, 0, 0, 1, 2)  # Fila 0, ocupa 2 columnas
+        layout.addWidget(subtitulo, 1, 0, 1, 2)  # Fila 1, ocupa 2 columnas
+        layout.addWidget(etiqueta_labs, 2, 0)  # Fila 2, columna 0
+        layout.addWidget(etiqueta_estudiantes, 2, 1)  # Fila 2, columna 1
+        layout.addWidget(self.lista_labs, 3, 0)  # Fila 3, columna 0
+        layout.addWidget(self.lista_estudiantes, 3, 1)  # Fila 3, columna 1
+        layout.addWidget(boton_subir, 4, 0)  # Fila 4, columna 0
+        layout.addWidget(boton_asignar, 4, 1)  # Fila 4, columna 1
+        layout.addWidget(boton_salir, 5, 0, 1, 2)  # Fila 5, ocupa 1 fila y 2 columnas
 
         widget_central = QWidget()  # QMainWindow necesita un widget central
         widget_central.setLayout(layout)  # Se le pone la cuadrícula al widget central
